@@ -1,6 +1,11 @@
 package io.zipcoder;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author tariq
  */
@@ -15,8 +20,36 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
-    }
+        int count = 0;
+        String str = input;
+        String parts[] = str.split(" ");
+        for(String part : parts) {
+            if (str.charAt(str.length()-1) == 'z') {
+                count++;
+            }
+            else if ((str.charAt(str.length()-1) == 'y')) {
+                count++;
+            }
+            else return count;
+        }
+        return count;
+    };
+        // attempt without using arrays
+        //        int count = 0;
+//        for (int i = 0; i < input.length() - 1; i++){
+//            if ((input.charAt(i) == 'y' || input.charAt(i) == 'z')) {
+//                count++;
+//            }
+//            if (input.charAt(input.length() - 1) == 'y') {
+//                count++;
+//            }
+//            else if (input.charAt(input.length() - 1) == 'z') {
+//                count++;
+//            }
+//            else return count;
+//        }
+//        return count;
+
 
     /**
      * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
@@ -28,8 +61,16 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
-    }
+      int count = 0;
+      String fin = "";
+      String str = base;
+        List<String> parts = new ArrayList<>(Arrays.asList(base));
+      for (String part : parts) {
+          parts.remove(remove);
+      }
+      fin = String.join(" ", parts);
+      return fin;
+    };
 
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
