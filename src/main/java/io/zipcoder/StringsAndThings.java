@@ -33,7 +33,7 @@ public class StringsAndThings {
             else return count;
         }
         return count;
-    };
+    }; //passed
         // attempt without using arrays
         //        int count = 0;
 //        for (int i = 0; i < input.length() - 1; i++){
@@ -61,16 +61,9 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-      int count = 0;
-      String fin = "";
-      String str = base;
-        List<String> parts = new ArrayList<>(Arrays.asList(base));
-      for (String part : parts) {
-          parts.remove(remove);
-      }
-      fin = String.join(" ", parts);
-      return fin;
-    };
+        String result = base.replace(remove, "");
+        return result;
+    }; //passed
 
     /**
      * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
@@ -81,7 +74,20 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        int countIs = 0;
+        int countNot = 0;
+        int len = input.length();
+        for (int i = 0; i < len-1; i++) {
+            if ((input.charAt(i) == 'i') && (input.charAt(i+1) == 's')) {
+                countIs++;
+            }
+            else if ((input.charAt(i) == 'n') && (input.charAt(i+1) == 'o') && (input.charAt(i+2) == 't')) {
+                countNot++;
+            }
+        }
+        System.out.print("# of is: " + countIs);
+        System.out.print("# of not: " + countNot);
+        return (countIs == countNot);
     }
 
     /**
@@ -91,9 +97,16 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
-    }
+    public Boolean gIsHappy(String input) {
+        boolean happy = false;
+        for (int i = 0; i < input.length()-1; i++) {
+            if ((input.charAt(i) == 'g') && (input.charAt(i + 1) == 'g')) {
+                happy = true;
+                break;
+            }
+        }
+        return happy;
+    } //passed
 
 
     /**
@@ -104,6 +117,12 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count = 0;
+        for (int i = 0; i < input.length()-1; i++) {
+            if (input.charAt(i) == (input.charAt(i + 1)) && input.charAt(i) == input.charAt(i + 2)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
